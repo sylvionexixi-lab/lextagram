@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lextagram by Jerah</title>
+<link rel="manifest" href="manifest.json"><meta name="theme-color" content="#ed9eb2">
+<link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Lextagram"><meta name="apple-mobile-web-app-status-bar-style" content="default">
+<style>
+:root{--bg:#fff6f0;--card:#fffaf3;--ink:#4a3439;--mut:#8a6a72;--pk:#ed9eb2;--dk:#644b50;--line:#f0cdd6;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#241719;--card:#33212a;--ink:#f6e3e6;--mut:#d3b0b9;--line:#55353f}}
+:root[data-theme="dark"]{--bg:#241719;--card:#33212a;--ink:#f6e3e6;--mut:#d3b0b9;--line:#55353f}
+*{box-sizing:border-box;margin:0}body{background:var(--bg);color:var(--ink);font:19px/1.6 Georgia,serif;-webkit-tap-highlight-color:transparent}
+button{font:inherit;cursor:pointer;color:inherit}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--bg);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:10px 16px;max-width:520px;margin:0 auto}
+.logo{font:italic 800 30px Georgia;color:#d9708b;line-height:1.1}.logo small{display:block;font:700 12px Arial;letter-spacing:2px;color:var(--mut);font-style:normal}
+.ib{border:0;background:var(--card);border:1px solid var(--line);border-radius:50%;width:50px;height:50px;font-size:22px}
+main{max-width:520px;margin:0 auto;padding:14px 14px 120px}
+.stories{display:flex;gap:18px;overflow-x:auto;padding:6px 2px 14px}.st{border:0;background:none;text-align:center;font:700 14px Arial}.av{width:72px;height:72px;border-radius:50%;display:grid;place-items:center;font:900 28px Georgia;color:#fff;background:linear-gradient(135deg,#ed9eb2,#c4566f);border:3px solid var(--bg);outline:3px solid #ed9eb2;margin:3px auto 6px}.st.on .av{outline-color:var(--dk)}.av.sm{width:46px;height:46px;font-size:19px;margin:0;outline-width:2px;border-width:2px}.av.l{background:linear-gradient(135deg,#9a7a82,#644b50)}
+.chips{display:flex;gap:8px;margin-bottom:14px}.chips button{border:1px solid var(--line);background:var(--card);border-radius:99px;padding:9px 18px;font:700 15px Arial}.chips .on{background:var(--dk);color:#fff6f0;border-color:var(--dk)}
+.post{background:var(--card);border:1px solid var(--line);border-radius:22px;margin-bottom:20px;overflow:hidden;box-shadow:0 10px 28px #6b3a4a14}
+.ph{display:flex;align-items:center;gap:12px;padding:12px 14px}.ph b{display:block;font-size:19px;line-height:1.2}.ph span{font:13px Arial;color:var(--mut)}.ph .x{margin-left:auto;border:0;background:none;font-size:22px;padding:6px 10px}
+.post img{width:100%;display:block;max-height:560px;object-fit:cover;background:#eadaca;-webkit-user-select:none;user-select:none}
+.act{padding:10px 14px 0;display:flex;gap:6px}.act button{border:0;background:none;font-size:30px;padding:4px 8px;transition:transform .2s}.act .lk.on{color:#e0607f;transform:scale(1.15)}
+.cap{padding:4px 16px 18px;white-space:pre-wrap;word-wrap:break-word}.cap b{margin-right:6px}
+.note{background:linear-gradient(135deg,#fbe9e9,#ed9eb2);color:#3b2228;padding:34px 22px;font:italic 25px/1.5 Georgia;text-align:center;white-space:pre-wrap}
+.empty{text-align:center;color:var(--mut);padding:50px 10px}
+.fab{position:fixed;right:18px;bottom:calc(20px + env(safe-area-inset-bottom,0px));height:62px;padding:0 26px;border:0;border-radius:99px;background:var(--dk);color:#fff6f0;font:700 18px Arial;box-shadow:0 8px 24px #0004;z-index:12}
+.sheet{position:fixed;inset:0;background:#0007;z-index:30;display:flex;align-items:flex-end;justify-content:center}.sheet>div{background:var(--card);width:min(100%,520px);max-height:92vh;overflow:auto;border-radius:26px 26px 0 0;padding:22px 20px calc(22px + env(safe-area-inset-bottom,0px))}
+.sheet h2{font-size:28px;margin-bottom:8px}.sheet input[type=password],.sheet textarea{width:100%;font:inherit;padding:14px;border:2px solid var(--line);border-radius:14px;background:var(--bg);color:var(--ink);margin:8px 0}.sheet textarea{min-height:130px}
+.btn{border:0;background:var(--dk);color:#fff6f0;font:700 18px Arial;padding:15px 24px;border-radius:99px;margin:6px 8px 0 0}.btn.g{background:var(--line);color:var(--ink)}
+.who{display:flex;gap:10px;margin:8px 0}.who button{flex:1;border:2px solid var(--line);background:var(--bg);border-radius:14px;padding:12px;font:700 17px Arial}.who .on{border-color:#d9708b;background:#fbe9e9;color:#3b2228}
+.pick{display:block;border:2px dashed var(--pk);border-radius:16px;padding:18px;text-align:center;margin:8px 0;font:700 17px Arial;color:#c4566f}.pick img{max-width:100%;max-height:260px;border-radius:10px;margin-top:8px}.sheet small{font:14px Arial;color:var(--mut);display:block;margin-top:6px}
+#toast{position:fixed;left:50%;bottom:calc(100px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:#3b2228;color:#fff;padding:14px 20px;border-radius:14px;font:16px/1.4 Arial;z-index:50;max-width:90vw;text-align:center}
+.sh{animation:sh .4s}@keyframes sh{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.h{position:fixed;pointer-events:none;z-index:40;font-size:80px;color:#e0607f;animation:pop .8s ease-out forwards}@keyframes pop{to{transform:translateY(-60px) scale(1.5);opacity:0}}
+</style></head><body>
+<div id="app"></div>
+<script>
+var S={posts:[]},PW="",SIG="",LOADING=true;
+var $=function(q){return document.querySelector(q)},U=false,F="all",by0="Jerah",img0="",LK=[];
+try{PW=sessionStorage.getItem("lxpw")||"";U=!!PW;LK=JSON.parse(localStorage.getItem("lxl")||"[]")}catch(e){}
+function E(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function ago(t){var m=(Date.now()-t)/6e4;if(m<1)return"just now";if(m<60)return Math.floor(m)+" min ago";if(m<1440)return Math.floor(m/60)+" hr ago";if(m<10080)return Math.floor(m/1440)+" days ago";return new Date(t).toLocaleDateString(undefined,{month:"short",day:"numeric",year:"numeric"})}
+function av(n,c){return'<div class="av '+(c||"")+(n=="Lexter"?" l":"")+'">'+n[0]+"</div>"}
+function render(){
+ var ps=S.posts.filter(function(p){return F=="all"||p.by==F});
+ var h='<header><div class="logo">Lextagram<small>BY JERAH ♡</small></div><button class="ib" id="lock" aria-label="'+(U?"Lock":"Unlock to post")+'">'+(U?"🔓":"🔒")+'</button></header><main><div class="stories">'+["Jerah","Lexter"].map(function(n){return'<button class="st '+(F==n?"on":"")+'" data-f="'+n+'">'+av(n)+n+"</button>"}).join("")+'</div><div class="chips">'+[["all","All"],["Jerah","Jerah"],["Lexter","Lexter"]].map(function(c){return'<button data-f="'+c[0]+'" class="'+(F==c[0]?"on":"")+'">'+c[1]+"</button>"}).join("")+"</div>";
+ h+=ps.length?ps.map(function(p){var lk=LK.indexOf(p.id)>-1;
+  return'<article class="post" data-id="'+p.id+'"><div class="ph">'+av(p.by,"sm")+"<div><b>"+p.by+"</b><span>"+ago(p.t)+"</span></div>"+(U?'<button class="x" data-del="'+p.id+'" aria-label="Delete post">🗑️</button>':"")+"</div>"+(p.img&&p.img.indexOf("data:image/")==0?'<img src="'+p.img+'" alt="Photo by '+p.by+'" data-lk="'+p.id+'">':'<div class="note" data-lk="'+p.id+'">'+E(p.cap)+"</div>")+'<div class="act"><button class="lk '+(lk?"on":"")+'" data-lk="'+p.id+'" aria-label="Like">'+(lk?"♥":"♡")+"</button></div>"+(p.img?'<div class="cap"><b>'+p.by+"</b>"+E(p.cap)+"</div>":'<div style="height:14px"></div>')+"</article>"}).join(""):'<div class="empty">'+(LOADING?"Loading ♡":"Nothing here yet ♡")+"</div>";
+ h+='</main><button class="fab" id="fab">＋ New post</button><div id="sh"></div><div id="toast" hidden></div>';
+ $("#app").innerHTML=h;wire()}
+function toast(t){var e=$("#toast");e.textContent=t;e.hidden=false;setTimeout(function(){e.hidden=true},4200)}
+function heart(x,y){var s=document.createElement("span");s.className="h";s.textContent="♥";s.style.left=x-40+"px";s.style.top=y-40+"px";$("#app").appendChild(s);setTimeout(function(){s.remove()},800)}
+function like(id,e){var i=LK.indexOf(id);if(i<0){LK.push(id);if(e)heart(e.clientX,e.clientY)}else if(!e||e.type=="click"&&e.target.classList.contains("lk"))LK.splice(i,1);try{localStorage.setItem("lxl",JSON.stringify(LK))}catch(x){}var y=scrollY;render();scrollTo(0,y)}
+function wire(){
+ [].forEach.call(document.querySelectorAll("[data-f]"),function(b){b.onclick=function(){F=F==b.dataset.f&&b.className.indexOf("st")>-1?"all":b.dataset.f;render()}});
+ [].forEach.call(document.querySelectorAll("[data-lk]"),function(b){var t=0;b.onclick=function(e){if(b.classList.contains("lk"))return like(b.dataset.lk,e);var n=Date.now();if(n-t<350){if(LK.indexOf(b.dataset.lk)<0)like(b.dataset.lk,e)}t=n}});
+ [].forEach.call(document.querySelectorAll("[data-del]"),function(b){b.onclick=function(){if(confirm("Delete this post?"))del(b.dataset.del)}});
+ $("#lock").onclick=function(){if(U){U=false;PW="";try{sessionStorage.removeItem("lxpw")}catch(e){}render();toast("Locked 🔒")}else gate()};
+ $("#fab").onclick=function(){U?compose():gate()}}
+function sheet(h){$("#sh").innerHTML='<div class="sheet" id="shb"><div>'+h+"</div></div>";$("#shb").onclick=function(e){if(e.target.id=="shb")$("#sh").innerHTML=""}}
+/* ===== SETUP: paste your Supabase project URL and anon/publishable key here ===== */
+var CFG={url:"https://tkmgbwprelekzkzkwhab.supabase.co",key:"sb_publishable_4tV7cd-lcoqJznZgdJhGYA_Y6kHjfTb"};
+/* ================================================================================ */
+function api(p,o){o=o||{};var h={apikey:CFG.key,"Content-Type":"application/json"};if(CFG.key.indexOf("eyJ")==0)h.Authorization="Bearer "+CFG.key;o.headers=h;return fetch(CFG.url+p,o).then(function(r){if(!r.ok)return r.text().then(function(t){throw new Error(t)});return r.text().then(function(t){return t?JSON.parse(t):null})})}
+function rpc(n,b){return api("/rest/v1/rpc/"+n,{method:"POST",body:JSON.stringify(b)})}
+function load(){if(CFG.url.indexOf("YOUR-")>-1){LOADING=false;render();return toast("Setup needed: add your Supabase URL and key near the top of the script.")}
+ api("/rest/v1/posts?select=*&order=t.desc&limit=100").then(function(r){r=r||[];var s=r.map(function(p){return p.id}).join();if(s===SIG&&!LOADING)return;SIG=s;S.posts=r;LOADING=false;render()}).catch(function(){LOADING=false;render();toast("Couldn’t load posts. Check your connection and setup.")})}
+function gate(){sheet('<h2>Only for us ♡</h2><p style="color:var(--mut);font-size:17px">Anyone can look, but only Jerah and Lexter can post. Enter the password.</p><input type="password" id="pw" placeholder="Password" autocomplete="off"><button class="btn" id="go">Unlock</button><button class="btn g" id="cx">Cancel</button>');
+ $("#cx").onclick=function(){$("#sh").innerHTML=""};
+ function go(){var v=$("#pw").value.trim();rpc("check_pw",{pw:v}).then(function(ok){if(ok===true){PW=v;U=true;try{sessionStorage.setItem("lxpw",v)}catch(e){}render();compose()}else{$("#pw").classList.add("sh");$("#pw").value="";setTimeout(function(){$("#pw").classList.remove("sh")},450);toast("Wrong password, try again ♡")}}).catch(function(){toast("Couldn’t check the password. Is the setup finished?")})}
+ $("#go").onclick=go;$("#pw").onkeydown=function(e){if(e.key=="Enter")go()};$("#pw").focus()}
+function compose(){img0="";
+ sheet('<h2>New post ♡</h2><div class="who">'+["Jerah","Lexter"].map(function(n){return'<button data-by="'+n+'" class="'+(by0==n?"on":"")+'">'+n+"</button>"}).join("")+'</div><label class="pick">📷 Add a photo (optional)<input type="file" id="fi" accept="image/*" hidden><div id="pv"></div></label><textarea id="cp" placeholder="Write a caption, or a random message for him/her…"></textarea><small>No photo? It posts as a message card.</small><button class="btn" id="pt">Post ♡</button><button class="btn g" id="cx">Cancel</button>');
+ [].forEach.call(document.querySelectorAll("[data-by]"),function(b){b.onclick=function(){by0=b.dataset.by;[].forEach.call(document.querySelectorAll("[data-by]"),function(x){x.classList.toggle("on",x==b)})}});
+ $("#cx").onclick=function(){$("#sh").innerHTML=""};
+ $("#fi").onchange=function(){var f=this.files[0];if(!f)return;var im=new Image();im.onload=function(){var c=document.createElement("canvas"),k=Math.min(1,900/Math.max(im.width,im.height));c.width=im.width*k;c.height=im.height*k;c.getContext("2d").drawImage(im,0,0,c.width,c.height);img0=c.toDataURL("image/jpeg",.74);$("#pv").innerHTML='<img src="'+img0+'" alt="">'};im.src=URL.createObjectURL(f)};
+ $("#pt").onclick=function(){var cap=$("#cp").value.trim();if(!cap&&!img0)return toast("Add a photo or write something first ♡");post({id:Date.now().toString(36),by:by0,t:Date.now(),img:img0,cap:cap})}}
+function post(p){toast("Posting…");rpc("add_post",{pw:PW,p_by:p.by,p_img:p.img,p_cap:p.cap}).then(function(){F="all";SIG="";load();scrollTo(0,0);toast("Posted ♡")}).catch(function(){toast("Couldn’t post. Check the password and the setup.")})}
+function del(id){rpc("delete_post",{pw:PW,p_id:id}).then(function(){SIG="";load()}).catch(function(){toast("Couldn’t delete.")})}
+render();load();setInterval(function(){if(!$("#sh").innerHTML)load()},60000);
+</script><script>if("serviceWorker"in navigator)addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){})})</script></body></html>
